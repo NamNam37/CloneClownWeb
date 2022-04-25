@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -16,17 +15,12 @@ import {
 } from '@coreui/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@coreui/icons-angular';
-import { WidgetsModule } from '../widgets/widgets.module';
 
-import { UsersRoutingModule } from './users-routing.module';
-import { UsersComponent } from './users.component';
-import { UsersTableComponent } from 'src/app/components/users-table/users-table.component';
+import { UsersTableComponent } from './users-table.component';
 
 @NgModule({
-  declarations: [UsersComponent, UsersTableComponent
-  ],
+  declarations: [UsersTableComponent],
   imports: [
-    UsersRoutingModule,
     ModalModule,
     CardModule,
     NavModule,
@@ -42,7 +36,6 @@ import { UsersTableComponent } from 'src/app/components/users-table/users-table.
     ButtonGroupModule,
     AvatarModule,
     TableModule,
-    WidgetsModule,
-  ],
+  ]
 })
-export class UsersModule { }
+export class UsersTableModule { }
