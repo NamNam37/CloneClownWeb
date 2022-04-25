@@ -1,0 +1,17 @@
+
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">details</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let log of logs">
+      <td>{{ log.id }}</td>
+      <td>{{ log.details }}</td>
+      <td><a class="btn btn-primary">Edit</a></td>
+    </tr>
+    </tbody>
+  </table>

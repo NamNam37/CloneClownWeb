@@ -20,10 +20,14 @@ import { WidgetsModule } from '../widgets/widgets.module';
 
 import { LogsRoutingModule } from './logs-routing.module';
 import { LogsComponent } from './logs.component';
+import { LogsTableComponent } from 'src/app/components/logs-table/logs-table.component';
 
 
 @NgModule({
-  declarations: [LogsComponent],
+  declarations: [
+    LogsComponent,
+    LogsTableComponent
+  ],
   imports: [
     CommonModule,
     LogsRoutingModule,
