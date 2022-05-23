@@ -20,4 +20,8 @@ export class UsersTableComponent implements OnInit {
   ngOnInit(): void {
   }
   icons = freeSet;
+
+  public edit(user: Users): void {
+    this.selected.emit(user);
+  }
 }

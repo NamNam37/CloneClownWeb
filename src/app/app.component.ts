@@ -4,6 +4,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
 import { Title } from '@angular/platform-browser';
+import { SessionsService } from './services/sessions.service'
+import { filter, interval, tap } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,7 +18,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private titleService: Title,
-    private iconSetService: IconSetService
+    private iconSetService: IconSetService,
+    private sessions: SessionsService
   ) {
     titleService.setTitle(this.title);
     // iconSet singleton
@@ -29,5 +32,14 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+    interval(1000).pipe(
+      filter(() => !this.sessions.authenticated),
+      tap(() => this.sessions.logout())
+    ).subscribe(() => this.router.navigate([ '/login' ]));
   }
+  public get authenticated(): boolean {
+    return this.sessions.authenticated;
+  }
+
+  
 }

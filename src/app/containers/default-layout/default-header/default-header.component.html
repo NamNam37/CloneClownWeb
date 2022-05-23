@@ -9,9 +9,9 @@
     <c-header-nav class="ms-3">
       <c-row>
         <c-col>
-          <a cButton color="primary" routerLink="./">
+          <button cButton color="primary" (click)="logout()">
             Logout
-          </a>
+          </button>
         </c-col>
         <c-col>
           <ng-container *ngTemplateOutlet="user"></ng-container>
@@ -22,9 +22,6 @@
   </c-container>
 </ng-container>
 <!--</c-header>-->
-<ng-template #settings alignment="end">
-  <button class="btn btn-primary" type="button" routerLink="./"><svg cIcon name="cilSettings"></svg></button>
-</ng-template>
 
 <ng-template #user>
   <c-dropdown alignment="end" variant="nav-item">

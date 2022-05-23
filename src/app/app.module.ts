@@ -46,6 +46,7 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
+import {JwtModule} from "@auth0/angular-jwt";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -56,6 +57,10 @@ const APP_CONTAINERS = [
   DefaultHeaderComponent,
   DefaultLayoutComponent,
 ];
+
+function tokenGetter() {
+  return sessionStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [AppComponent, ...APP_CONTAINERS],
@@ -87,6 +92,11 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      },
+    }),
   ],
   providers: [
     {

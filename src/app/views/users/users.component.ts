@@ -30,4 +30,8 @@ export class UsersComponent implements OnInit {
   handleChange(event: any) {
     this.visible = event;
   }
+
+  public edit(user: Users): void {
+    this.router.navigate([ 'users-editor', user.id ]);
+  }
 }

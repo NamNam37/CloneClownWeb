@@ -1,4 +1,3 @@
-import { FTP } from './FTP.model';
 import { Configs } from './configs.model';
 
 export class DestF {
@@ -6,6 +5,9 @@ export class DestF {
   public configID: number = 0;
   public path: string = "";
   public type: string = "";
-  public ftp: FTP = new FTP();
+  public login: string = "";
+  public password: string = "";
+  public hostname: string = "";
+  public port: number = 21;
   public config: Configs = new Configs();
 }

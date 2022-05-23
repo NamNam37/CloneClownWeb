@@ -3,38 +3,24 @@
         <tr>
             <th scope="col">Online</th>
             <th scope="col">User</th>
-            <th scope="col">MAC</th>
             <th scope="col">IP</th>
             <th scope="col">Last Backup</th>
             <th scope="col"></th>
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td><svg [cIcon]="icons.cilWifiSignal4" size="xl" title="List Icon"></svg></td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.mac }}</td>
-            <td>{{ user.ip }}</td>
-            <td>{{ user.last_backup }}</td>
-            <td class="buttons">
-                <c-button-group aria-label="Basic example" role="group">
-                    <button cButton color="danger">Remove</button>
-                    <button cButton color="primary" routerLink="/users-editor">Edit</button>
-                </c-button-group>
-            </td>
-        </tr>
-        <tr>
-            <td><svg [cIcon]="icons.cilWifiSignalOff" size="xl" title="List Icon"></svg></td>
-            <td>Name</td>
-            <td>EB:D3:B6:59:C0:14</td>
-            <td>45.15.315.1</td>
-            <td>11.2.2022</td>
-            <td class="buttons">
-                <c-button-group aria-label="Basic example" role="group">
-                    <button cButton color="danger">Remove</button>
-                    <button cButton color="primary" routerLink="/users-editor">Edit</button>
-                </c-button-group>
-            </td>
-        </tr>
+    <tbody *ngFor="let user of users">
+            <tr *ngIf="user.verified">
+                <td><svg *ngIf="user.online" [cIcon]="icons.cilWifiSignal4" size="xl" title="List Icon"></svg> 
+                    <svg *ngIf="!user.online" [cIcon]="icons.cilWifiSignalOff" size="xl" title="List Icon"></svg></td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.ip }}</td>
+                <td>{{ user.last_backup }}</td>
+                <td class="buttons">
+                    <c-button-group aria-label="Basic example" role="group">
+                        <button cButton color="danger">Remove</button>
+                        <button cButton color="primary" (click)="edit(user)">Edit</button>
+                    </c-button-group>
+                </td>
+            </tr>
     </tbody>
 </table>

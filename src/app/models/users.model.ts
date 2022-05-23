@@ -8,6 +8,7 @@ export class Users {
   public ip: string = "";
   public online: boolean = false;
   public last_backup: Date = new Date();
+  public verified: boolean = false;
   public configs: Configs[] = [];
   public logs: Logs[] = [];
 }
