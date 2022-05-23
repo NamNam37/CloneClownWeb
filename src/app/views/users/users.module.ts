@@ -20,12 +20,15 @@ import { WidgetsModule } from '../widgets/widgets.module';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
-import { UsersTableComponent } from 'src/app/components/users-table/users-table.component';
+import { UsersTableModule } from 'src/app/components/users-table/users-table.module';
+import { UsersModalModule } from 'src/app/components/users-modal/users-modal.module';
 
 @NgModule({
-  declarations: [UsersComponent, UsersTableComponent
+  declarations: [UsersComponent,
   ],
   imports: [
+    UsersTableModule,
+    UsersModalModule,
     UsersRoutingModule,
     ModalModule,
     CardModule,

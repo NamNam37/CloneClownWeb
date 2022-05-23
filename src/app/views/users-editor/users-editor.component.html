@@ -1,109 +1,55 @@
-<c-col>
-    <c-card class="mb-4">
-        <c-card-header>
-            <h4 cCardTitle>Username: admin</h4>
-        </c-card-header>
-    </c-card>
-    <c-card class="mb-4">
-        <c-card-header>
-            <h5 cCardTitle>Configurations</h5>
-        </c-card-header>
-        <c-card-body>
-            <c-input-group class="mb-3">
-                <span cInputGroupText>Configuration Name</span>
-                <input aria-label="ConfigName" cFormControl placeholder="daily backup" />
-            </c-input-group>
-            <c-input-group class="mb-3">
-                <button cButton color="primary">Add</button>
-                <button cButton color="primary">Name Check</button>
-                <button cButton color="primary" routerLink="/configs-editor">Create New Configuration</button>
-            </c-input-group>
-        </c-card-body>
-    </c-card>
-    <c-card class="mb-4">
-        <c-card-header>
-            <h5 cCardTitle>Added Configurations</h5>
-        </c-card-header>
-        <c-card-body>
-            <table cTable hover>
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Schedule</th>
-                        <th scope="col">Last Used</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>11.5.2022</td>
-                        <td>11.2.2020</td>
-                        <td class="buttons">
-                            <c-button-group aria-label="Basic example" role="group">
-                                <button cButton color="danger">Remove</button>
-                                <button cButton color="primary" routerLink="/configs-editor">Edit</button>
-                            </c-button-group>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>11.5.2022</td>
-                        <td>11.2.2020</td>
-                        <td>
-                            <c-button-group aria-label="Basic example" role="group">
-                                <button cButton color="danger">Remove</button>
-                                <button cButton color="primary" routerLink="/configs-editor">Edit</button>
-                            </c-button-group>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>11.5.2022</td>
-                        <td>11.2.2020</td>
-                        <td>
-                            <c-button-group aria-label="Basic example" role="group">
-                                <button cButton color="danger">Remove</button>
-                                <button cButton color="primary" routerLink="/configs-editor">Edit</button>
-                            </c-button-group>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>11.5.2022</td>
-                        <td>11.2.2020</td>
-                        <td>
-                            <c-button-group aria-label="Basic example" role="group">
-                                <button cButton color="danger">Remove</button>
-                                <button cButton color="primary" routerLink="/configs-editor">Edit</button>
-                            </c-button-group>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>11.5.2022</td>
-                        <td>11.2.2020</td>
-                        <td>
-                            <c-button-group aria-label="Basic example" role="group">
-                                <button cButton color="danger">Remove</button>
-                                <button cButton color="primary" routerLink="/configs-editor">Edit</button>
-                            </c-button-group>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>11.5.2022</td>
-                        <td>11.2.2020</td>
-                        <td>
-                            <c-button-group aria-label="Basic example" role="group">
-                                <button cButton color="danger">Remove</button>
-                                <button cButton color="primary" routerLink="/configs-editor">Edit</button>
-                            </c-button-group>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </c-card-body>
-    </c-card>
-    <button cButton color="primary" routerLink="/users">Back</button>
-</c-col>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <c-col>
+        <c-card class="mb-4">
+            <c-card-header>
+                <h4 cCardTitle>Username: {{user.username}}</h4>
+            </c-card-header>
+        </c-card>
+        <c-card class="mb-4">
+            <c-card-header>
+                <h5 cCardTitle>Configurations</h5>
+            </c-card-header>
+            <c-card-body>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>Configuration Name</span>
+                    <input aria-label="ConfigName" cFormControl placeholder="daily backup" #ConfigName />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <button cButton color="primary" (click)="add(ConfigName.value)">Add</button>
+                    <button cButton color="primary" routerLink="/configs-creator">Create New Configuration</button>
+                </c-input-group>
+            </c-card-body>
+        </c-card>
+        <c-card class="mb-4">
+            <c-card-header>
+                <h5 cCardTitle>Added Configurations</h5>
+            </c-card-header>
+            <c-card-body>
+                <table cTable hover>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Schedule</th>
+                            <th scope="col">Last Used</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let config of user.configs">
+                            <td>{{config.configName}}</td>
+                            <td>{{config.schedule}}</td>
+                            <td>{{config.last_used}}</td>
+                            <td class="buttons">
+                                <c-button-group aria-label="Basic example" role="group">
+                                    <button cButton color="danger">Remove</button>
+                                    <button cButton color="primary" routerLink="/configs-editor">Edit</button>
+                                </c-button-group>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+        <button cButton color="primary" type="submit">Save</button>
+    </c-col>
+</form>

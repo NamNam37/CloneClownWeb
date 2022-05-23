@@ -20,18 +20,9 @@ export class UsersComponent implements OnInit {
     this.users = this.service.findAll()
   }
 
-  public visible = false;
   icons = freeSet;
 
-  Toggle() {
-    this.visible = !this.visible;
-  }
-
-  handleChange(event: any) {
-    this.visible = event;
-  }
-
   public edit(user: Users): void {
-    this.router.navigate([ 'users-editor', user.id ]);
+    this.router.navigate(['users-editor', user.id]);
   }
 }
