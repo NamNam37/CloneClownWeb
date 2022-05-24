@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersComponent implements OnInit {
 
+  public visible: boolean = false
   users: Observable<Users[]>;
   constructor(private router: Router,
     private service: UsersService) { }
@@ -22,7 +23,16 @@ export class UsersComponent implements OnInit {
 
   icons = freeSet;
 
+
+  public showModal(): void {
+    this.visible = true;
+  }
+
   public edit(user: Users): void {
     this.router.navigate(['users-editor', user.id]);
+  }
+
+  public back(visible: boolean): void {
+    this.visible = visible;
   }
 }

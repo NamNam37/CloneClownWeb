@@ -11,17 +11,17 @@
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Name</th>
-                    <th scope="col">MAC</th>
                     <th scope="col">IP</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input cFormCheckInput id="checkOne" type="checkbox"></td>
-                    <td>Name</td>
-                    <td>11.5.2022</td>
-                    <td>11.2.2020</td>
-                </tr>
+                <ng-container *ngFor="let user of users ; index as i">
+                    <tr>
+                        <td><input cFormCheckInput [value]="user.verified" (change)="changeAt(i)" type="checkbox"></td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.ip}}</td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
 
@@ -31,6 +31,6 @@
         <button (click)="Toggle()" cButton color="secondary">
             Close
         </button>
-        <button cButton color="primary">Save changes</button>
+        <button cButton color="primary" (click)="Save()">Save changes</button>
     </c-modal-footer>
 </c-modal>

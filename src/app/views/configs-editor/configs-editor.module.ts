@@ -21,10 +21,12 @@ import { WidgetsModule } from '../widgets/widgets.module';
 
 import { ConfigsEditorRoutingModule } from './configs-editor-routing.module';
 import { ConfigsEditorComponent } from './configs-editor.component';
+import { ConfigsFormModule } from '../../components/configs-form/configs-form.module';
 
 @NgModule({
   declarations: [ConfigsEditorComponent],
   imports: [
+    ConfigsFormModule,
     ConfigsEditorRoutingModule,
     ModalModule,
     CardModule,

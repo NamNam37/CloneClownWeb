@@ -23,14 +23,6 @@ export class ConfigsEditorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  public visible = false;
 
-  Toggle() {
-    this.visible = !this.visible;
-  }
-
-  handleChange(event: any) {
-    this.visible = event;
-  }
 
 }

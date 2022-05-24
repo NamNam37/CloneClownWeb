@@ -67,4 +67,8 @@ export class UsersEditorComponent implements OnInit {
     }
   }
 
+  public RemoveAt(index: number) {
+    this.user.configs.splice(index, 1)
+  }
+
 }

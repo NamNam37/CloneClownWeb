@@ -8,19 +8,20 @@
             <th scope="col"></th>
         </tr>
     </thead>
-    <tbody *ngFor="let user of users">
-            <tr *ngIf="user.verified">
-                <td><svg *ngIf="user.online" [cIcon]="icons.cilWifiSignal4" size="xl" title="List Icon"></svg> 
-                    <svg *ngIf="!user.online" [cIcon]="icons.cilWifiSignalOff" size="xl" title="List Icon"></svg></td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.ip }}</td>
-                <td>{{ user.last_backup }}</td>
-                <td class="buttons">
-                    <c-button-group aria-label="Basic example" role="group">
-                        <button cButton color="danger">Remove</button>
-                        <button cButton color="primary" (click)="edit(user)">Edit</button>
-                    </c-button-group>
-                </td>
-            </tr>
+    <tbody *ngFor="let user of users ; index as i">
+        <tr *ngIf="user.verified">
+            <td><svg *ngIf="user.online" [cIcon]="icons.cilWifiSignal4" size="xl" title="List Icon"></svg>
+                <svg *ngIf="!user.online" [cIcon]="icons.cilWifiSignalOff" size="xl" title="List Icon"></svg>
+            </td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.ip }}</td>
+            <td>{{ user.last_backup }}</td>
+            <td class="buttons">
+                <c-button-group aria-label="Basic example" role="group">
+                    <button cButton color="danger" (click)="RemoveAt(i)">Remove</button>
+                    <button cButton color="primary" (click)="edit(user)">Edit</button>
+                </c-button-group>
+            </td>
+        </tr>
     </tbody>
 </table>

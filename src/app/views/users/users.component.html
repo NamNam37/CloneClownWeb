@@ -3,7 +3,7 @@
         <h5 cCardTitle>Users</h5>
     </c-card-header>
     <c-card-body>
-        <button cButton>Verify New Users</button>
+        <button cButton (click)="showModal()">Verify New Users</button>
 
 
         <ng-container *ngIf="users|async as data">
@@ -11,4 +11,4 @@
         </ng-container>
     </c-card-body>
 </c-card>
-<app-users-modal></app-users-modal>
+<app-users-modal [visible]="visible" (back)="back($event)"></app-users-modal>
