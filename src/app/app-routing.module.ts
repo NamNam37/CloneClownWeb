@@ -43,6 +43,11 @@ const routes: Routes = [
           import('./views/configs-editor/configs-editor.module').then((m) => m.ConfigsEditorModule)
       },
       {
+        path: 'configs-creator',
+        loadChildren: () =>
+          import('./views/configs-creator/configs-creator.module').then((m) => m.ConfigsCreatorModule)
+      },
+      {
         path: 'mails',
         loadChildren: () =>
           import('./views/mails/mails.module').then((m) => m.MailsModule)

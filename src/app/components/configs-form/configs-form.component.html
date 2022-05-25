@@ -1,218 +1,138 @@
-<c-container>
-    <c-row>
-        <c-col>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h4 cCardTitle>Configuration Name: demo</h4>
-                </c-card-header>
-            </c-card>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h5 cCardTitle>Paths</h5>
-                </c-card-header>
-                <c-card-body>
-                    <c-input-group class="mb-3">
-                        <input aria-label="Source" cFormControl placeholder="Source" />
-                        <button cButton color="primary">Add</button>
-                    </c-input-group>
-                    <c-input-group class="mb-3">
-                        <input aria-label="Destination" cFormControl placeholder="Destination" />
-                        <button cButton color="primary">Add</button>
-                    </c-input-group>
-                    <button (click)="Toggle()" cButton>Add an FTP Destination</button>
-                </c-card-body>
-            </c-card>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h5 cCardTitle>Configured Paths</h5>
-                </c-card-header>
-                <c-card-body>
-                    <table cTable hover>
-                        <thead>
-                            <tr>
-                                <th scope="col">Sources</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>C:\Program Files</td>
-                                <td class="buttons">
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>C:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>C:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>C:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>C:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table cTable hover>
-                        <thead>
-                            <tr>
-                                <th scope="col">Destinations</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>D:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ftp://admin:password@apple.com:5110//A:\Backups</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>D:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ftp://admin:password@google.com//G:\Backups</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>D:\</td>
-                                <td>
-                                    <c-button-group aria-label="Basic example" role="group">
-                                        <button cButton color="danger">Remove</button>
-                                        <button cButton color="primary">Edit</button>
-                                    </c-button-group>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </c-card-body>
-            </c-card>
-        </c-col>
-        <c-col>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h5 cCardTitle>Schedule</h5>
-                </c-card-header>
-                <c-card-body>
-                    <div class="input-group mb-3">
-                        <c-input-group>
-                            <span cInputGroupText>Cron string</span>
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
+<form [formGroup]="form">
+    <c-container>
+        <c-row>
+            <c-col>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h4 cCardTitle>Configuration Name: {{config.configName}}</h4>
+                    </c-card-header>
+                </c-card>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Paths</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <c-input-group class="mb-3">
+                            <input aria-label="Source" cFormControl placeholder="Source" #source />
+                            <button cButton color="primary" (click)="AddSource(source.value)">Add</button>
                         </c-input-group>
-                    </div>
-                    <div class="input-group mb-3">
-                        <button cButton color="primary">Add To Presets</button>
-
-                        <c-dropdown>
-                            <button cButton cDropdownToggle color="primary">
-                                Presets
+                        <c-input-group class="mb-3">
+                            <input aria-label="Destination" cFormControl placeholder="Destination" #dest />
+                            <button cButton color="primary" (click)="AddDest(dest.value)">Add</button>
+                        </c-input-group>
+                        <button (click)="Toggle()" cButton>Add an FTP Destination</button>
+                    </c-card-body>
+                </c-card>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Configured Paths</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <table cTable hover>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sources</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let source of config.sources; index as i">
+                                    <td>{{source.path}}</td>
+                                    <td class="buttons">
+                                        <c-button-group aria-label="Basic example" role="group">
+                                            <button cButton color="danger" (click)="RemoveSourceAt(i)">Remove</button>
+                                        </c-button-group>
+                                    </td>
+                            </tbody>
+                        </table>
+                        <table cTable hover>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Destinations</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let dest of config.dests; index as i">
+                                    <td>{{dest.path}}</td>
+                                    <td>
+                                        <c-button-group aria-label="Basic example" role="group">
+                                            <button cButton color="danger" (click)="RemoveDestAt(i)">Remove</button>
+                                        </c-button-group>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </c-card-body>
+                </c-card>
+            </c-col>
+            <c-col>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Schedule</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <div class="input-group mb-3">
+                            <c-input-group>
+                                <span cInputGroupText>Cron string</span>
+                                <input cFormControl #cron1 (keyup)="onChange1(cron1.value)" />
+                                <input cFormControl #cron2 (keyup)="onChange2(cron2.value)" />
+                                <input cFormControl #cron3 (keyup)="onChange3(cron3.value)" />
+                                <input cFormControl #cron4 (keyup)="onChange4(cron4.value)" />
+                                <input cFormControl #cron5 (keyup)="onChange5(cron5.value)" />
+                            </c-input-group>
+                        </div>
+                    </c-card-body>
+                </c-card>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Other</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText id="basic-addon1">Configuration Name</span>
+                            <input aria-describedby="basic-addon1" aria-label="Split" placeholder="name"
+                                class="form-control" cFormControl formControlName="configName" />
+                        </c-input-group>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText id="basic-addon1">Destination has maximum of</span>
+                            <input aria-describedby="basic-addon1" aria-label="Split" placeholder="3"
+                                class="form-control" cFormControl formControlName="backupCount" />
+                            <span cInputGroupText id="basic-addon1">backups</span>
+                        </c-input-group>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText id="basic-addon1">Can rollback up to</span>
+                            <input aria-describedby="basic-addon1" aria-label="Split" cFormControl placeholder="4"
+                                class="form-control" cFormControl formControlName="packageCount" />
+                            <span cInputGroupText id="basic-addon1">times</span>
+                        </c-input-group>
+                        <c-input-group class="input-group mb-3">
+                            <span cInputGroupText>
+                                <c-form-check>
+                                    <input cFormCheckInput id="checkOne" type="checkbox" class="form-control"
+                                        formControlName="isZIP" />
+                                </c-form-check>
+                            </span>
+                            <span cInputGroupText>Backup as a ZIP</span>
+                        </c-input-group>
+                        <c-dropdown variant="btn-group">
+                            <button color="primary" cButton cDropdownToggle>
+                                Backup Types
                             </button>
-
                             <ul cDropdownMenu>
-                                <li><a routerLink cDropdownItem>M - F</a></li>
-                                <li><a routerLink cDropdownItem>Every Monday</a></li>
-                                <li><a routerLink cDropdownItem>Friday 13th of 2023</a></li>
+                                <li><button (click)="setFull()" cDropdownItem>Full</button></li>
+                                <li><button (click)="setDiff()" cDropdownItem>Differencial</button></li>
+                                <li><button (click)="setIncr()" cDropdownItem>Incremental</button></li>
                             </ul>
                         </c-dropdown>
-                    </div>
-                </c-card-body>
-            </c-card>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h5 cCardTitle>Other</h5>
-                </c-card-header>
-                <c-card-body>
-                    <c-input-group class="mb-3">
-                        <span cInputGroupText id="basic-addon1">Destination has maximum of</span>
-                        <input aria-describedby="basic-addon1" aria-label="Split" cFormControl placeholder="3" />
-                        <span cInputGroupText id="basic-addon1">backups</span>
-                    </c-input-group>
-                    <c-input-group class="mb-3">
-                        <span cInputGroupText id="basic-addon1">Can rollback up to</span>
-                        <input aria-describedby="basic-addon1" aria-label="Split" cFormControl placeholder="4" />
-                        <span cInputGroupText id="basic-addon1">times</span>
-                    </c-input-group>
-                    <c-input-group class="input-group mb-3">
-                        <span cInputGroupText>
-                            <c-form-check>
-                                <input cFormCheckInput id="checkOne" type="checkbox" />
-                            </c-form-check>
-                        </span>
-                        <span cInputGroupText>Backup as a ZIP</span>
-                    </c-input-group>
-                    <c-dropdown variant="btn-group">
-                        <button color="primary" cButton cDropdownToggle>
-                            Backup Types
-                        </button>
-                        <ul cDropdownMenu>
-                            <li><button routerLink cDropdownItem>Full</button></li>
-                            <li><button routerLink cDropdownItem>Differencial</button></li>
-                            <li><button routerLink cDropdownItem>Incremental</button></li>
-                        </ul>
-                    </c-dropdown>
-                </c-card-body>
-            </c-card>
-            <button cButton color="primary" routerLink="/configs">Back</button>
-        </c-col>
-    </c-row>
-</c-container>
+                        <h6>Current Config Type: {{config.type}}</h6>
+                    </c-card-body>
+                </c-card>
+                <button cButton color="primary" (click)="submit()">Save</button>
+            </c-col>
+        </c-row>
+    </c-container>
+</form>
 <c-modal id="FTPModal" [visible]="visible" (visibleChange)="handleChange($event)">
     <c-modal-header>
         <h5 cModalTitle>Add an FTP Destination</h5>

@@ -62,7 +62,7 @@ export class UsersEditorComponent implements OnInit {
         }
       });
     }
-    if (!dupl) {
+    if (!dupl && configInp != null) {
       this.user.configs.push(configInp);
     }
   }
