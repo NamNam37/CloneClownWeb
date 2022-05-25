@@ -20,11 +20,12 @@ import { WidgetsModule } from '../widgets/widgets.module';
 
 import { ConfigsRoutingModule } from './configs-routing.module';
 import { ConfigsComponent } from './configs.component';
-
+import { ConfigsTableModule } from '../../components/configs-table/configs-table.module'
 
 @NgModule({
   declarations: [ConfigsComponent],
   imports: [
+    ConfigsTableModule,
     CommonModule,
     ConfigsRoutingModule,
     ModalModule,

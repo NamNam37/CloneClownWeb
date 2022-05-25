@@ -17,8 +17,8 @@ export class ConfigsEditorComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private service: UsersService) {
+    private fb: FormBuilder
+  ) {
   }
 
   ngOnInit(): void {
