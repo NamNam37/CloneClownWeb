@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { FormBuilder, FormGroup } from '@angular/forms';
+=======
+import { FormGroup } from '@angular/forms';
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 =======
 import { FormGroup } from '@angular/forms';
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
@@ -37,9 +41,12 @@ export class ConfigsFormComponent implements OnInit {
     this.service.save(this.config).subscribe()
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   changeConfigName(name: string): void {
     this.config.configName = name;
   }
+=======
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 =======
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 
@@ -61,6 +68,7 @@ export class ConfigsFormComponent implements OnInit {
   public setFull(): void {
     this.config.type = 'full'
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.fullAct = true;
     this.diffAct = false;
     this.incrAct = false;
@@ -77,12 +85,17 @@ export class ConfigsFormComponent implements OnInit {
     this.diffAct = false;
     this.incrAct = true;
 =======
+=======
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
   }
   public setDiff(): void {
     this.config.type = 'differencial'
   }
   public setIncr(): void {
     this.config.type = 'incremental'
+<<<<<<< HEAD
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
+=======
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
   }
   public AddSource(path: string): void {
@@ -99,8 +112,12 @@ export class ConfigsFormComponent implements OnInit {
     this.config.dests.push(dest);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(private service: ConfigsService,
               private fb: FormBuilder) { }
+=======
+  constructor(private service: ConfigsService) { }
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 =======
   constructor(private service: ConfigsService) { }
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
@@ -108,6 +125,7 @@ export class ConfigsFormComponent implements OnInit {
   public RemoveSourceAt(index: number): void {
     this.config.sources.splice(index, 1);
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
   public RemoveDestById(id: number): void {
     let toDelete = this.config.dests.find(a => id == a.id);
@@ -148,6 +166,8 @@ export class ConfigsFormComponent implements OnInit {
     this.visible = false;
   }
 =======
+=======
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
   public RemoveDestAt(index: number): void {
     this.config.dests.splice(index, 1);
   }
@@ -165,5 +185,8 @@ export class ConfigsFormComponent implements OnInit {
     this.visible = event;
   }
 
+<<<<<<< HEAD
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
+=======
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 }

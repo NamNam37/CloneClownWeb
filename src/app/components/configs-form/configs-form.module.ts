@@ -20,7 +20,10 @@ import { IconModule } from '@coreui/icons-angular';
 
 import { ConfigsFormComponent } from './configs-form.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { FtpModalComponent } from '../ftp-modal/ftp-modal.component';
+=======
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 =======
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 
@@ -29,7 +32,11 @@ import { FtpModalComponent } from '../ftp-modal/ftp-modal.component';
 @NgModule({
   declarations: [
 <<<<<<< HEAD
+<<<<<<< HEAD
     ConfigsFormComponent, FtpModalComponent
+=======
+    ConfigsFormComponent
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 =======
     ConfigsFormComponent
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad

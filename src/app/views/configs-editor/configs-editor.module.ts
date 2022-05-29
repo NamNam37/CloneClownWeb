@@ -28,7 +28,10 @@ import { ConfigsFormModule } from '../../components/configs-form/configs-form.mo
   declarations: [ConfigsEditorComponent],
   imports: [
 <<<<<<< HEAD
+<<<<<<< HEAD
     AlertModule,
+=======
+>>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
 =======
 >>>>>>> 0f4644a06c3e510b7188d447cd700eed002be1ad
     ConfigsFormModule,
