@@ -22,12 +22,16 @@ export class UsersService {
     return this.http.get<Users>(environment.api + '/api/users/' + id);
   }
 
-  public save(log: Users): Observable<Users> {
-    if (log.id) {
-      return this.http.put<Users>(environment.api + '/api/users/' + log.id, log);
-
+  public save(user: Users): Observable<Users> {
+    if (user.id) {
+      this.http.put<Users>(environment.api + '/api/users/' + user.id, user).subscribe()
+      return this.http.put<Users>(environment.api + '/api/users/' + user.id, user);
     } else {
-      return this.http.post<Users>(environment.api + '/api/users/', log);
+      return this.http.post<Users>(environment.api + '/api/users/', user);
     }
+  }
+  public delete(index: number): Observable<Users> {
+    this.http.delete<Users>(environment.api + '/api/users/' + index).subscribe();
+    return this.http.delete<Users>(environment.api + '/api/users/' + index);
   }
 }

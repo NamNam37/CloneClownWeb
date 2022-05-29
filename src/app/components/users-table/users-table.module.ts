@@ -36,6 +36,8 @@ import { UsersTableComponent } from './users-table.component';
     ButtonGroupModule,
     AvatarModule,
     TableModule,
+  ], exports: [
+    UsersTableComponent
   ]
 })
 export class UsersTableModule { }

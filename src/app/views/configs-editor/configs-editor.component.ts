@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Users } from 'src/app/models/users.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Configs } from 'src/app/models/configs.model';
+import { ConfigsService } from 'src/app/services/configs.service';
 
 @Component({
   selector: 'app-configs-editor',
@@ -9,48 +11,32 @@ import { Users } from 'src/app/models/users.model';
 })
 export class ConfigsEditorComponent implements OnInit {
 
-  public user: Users;
+  public config: Configs;
 
   public form: FormGroup;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private fb: FormBuilder,
-              private service: UsersService) {
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private service: ConfigsService
+  ) {
   }
 
   ngOnInit(): void {
     let id = +this.route.snapshot.params['id'];
 
-    this.service.findById(id).subscribe(user => {
-      this.user = user;
-      this.form = this.createForm(this.user);
+    this.service.findById(id).subscribe(config => {
+      this.config = config;
+      this.form = this.createForm(this.config);
     });
   }
 
-  private createForm(user: User): FormGroup {
+  private createForm(config: Configs): FormGroup {
     return this.fb.group({
-      name: [ user.name, Validators.required ],
-      surname: [ user.surname, Validators.required ],
-      age: [ user.age, Validators.required ],
+      configName: config.configName,
+      packageCount: config.packageCount,
+      backupCount: config.backupCount,
+      isZIP: config.isZIP
     });
   }
-
-  public save(): void {
-    Object.assign(this.user, this.form.value);
-
-    this.service.save(this.user).subscribe(user => {
-      this.router.navigate([ 'users' ])
-    });
-  }
-  public visible = false;
-
-  Toggle() {
-    this.visible = !this.visible;
-  }
-
-  handleChange(event: any) {
-    this.visible = event;
-  }
-
 }
